@@ -36,6 +36,7 @@
 				      <th scope="col">Size</th>
 				      <th scope="col">Countdown</th>
 				      <th scope="col">New World</th>
+				      <th scope="col">PaknSave</th>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -55,6 +56,13 @@
 					      <td>
 					      	{% if results[gtin]["newWorldPrice"] %}
 					      		${{ results[gtin]["newWorldPrice"] }}
+					      	{% else %}
+					      	    N/A
+					      	{% endif %}
+					  	  </td>
+					  	  <td>
+					      	{% if results[gtin]["paknSavePrice"] %}
+					      		${{ results[gtin]["paknSavePrice"] }}
 					      	{% else %}
 					      	    N/A
 					      	{% endif %}
