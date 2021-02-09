@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1 class="mt-5">{% block title %} Welcome to Grocery Comparer v1{% endblock %}</h1>
+
+	<div class="row mt-3">
+
+		<div class="col-md-6 mb-4">
+
+			<label class="mb-2" for="search">Please enter the product you would like to search for:</label>
+
+			<form class="form-inline" style="flex-flow: nowrap;" action="/" method="POST">
+				<input class="form-control mr-sm-2" type="search" name="search" placeholder="Enter an item..." aria-label="Search" value="{{ request.form['search'] }}" style="width: 100%;">
+			    <button class="btn btn-outline-primary my-2 my-sm-0 px-5" type="submit">Search</button>
+			</form>
+
+		</div>
+
+	</div>
+
+	{% if request.method == "POST" %}
+	    
+		<div class="row">
+			<div class="col">
+				<label style="font-weight: 600;">Results:</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<table class="table mt-1">
+				  <thead class="thead-light">
+				    <tr>
+				      <th scope="col">GTIN</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">Size</th>
+				      <th scope="col">Countdown</th>
+				      <th scope="col">New World</th>
+<<<<<<< HEAD
+				      <th scope="col">PaknSave</th>
+=======
+>>>>>>> edd9f017ffc82453352030f393dfe86a6de3e125
+				    </tr>
+				  </thead>
+				  <tbody>
+
+				  	{% for gtin in results %}
+					    <tr>
+					      <th scope="row">{{ gtin }}</th>
+					      <td>{{ results[gtin]["name"] }}</td>
+					      <td>{{ results[gtin]["size"] }}</td>
+					      <td>
+					      	{% if results[gtin]["countdownPrice"] %}
+					      		${{ results[gtin]["countdownPrice"] }}
+					      	{% else %}
+					      	    N/A
+					      	{% endif %}
+					      </td>
+					      <td>
+					      	{% if results[gtin]["newWorldPrice"] %}
+					      		${{ results[gtin]["newWorldPrice"] }}
+					      	{% else %}
+					      	    N/A
+					      	{% endif %}
+					  	  </td>
+<<<<<<< HEAD
+					  	  <td>
+					      	{% if results[gtin]["paknSavePrice"] %}
+					      		${{ results[gtin]["paknSavePrice"] }}
+					      	{% else %}
+					      	    N/A
+					      	{% endif %}
+					  	  </td>
+=======
+>>>>>>> edd9f017ffc82453352030f393dfe86a6de3e125
+					    </tr>
+				    {% endfor %}
+				  </tbody>
+				</table>
+			</div>
+		</div>
+
+	{% endif %}
+
+{% endblock %}
